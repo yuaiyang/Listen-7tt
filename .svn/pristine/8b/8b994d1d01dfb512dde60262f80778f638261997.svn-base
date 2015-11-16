@@ -1,0 +1,131 @@
+//
+//  ViewController.m
+//  Radio
+//
+//  Created by lanou3g on 15/10/20.
+//  Copyright (c) 2015年 Ailan. All rights reserved.
+//
+
+#import "ViewController.h"
+#import "MsicuViewController.h"
+@interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *listenBook;//听书
+
+@property (weak, nonatomic) IBOutlet UIButton *liveButton;//直播
+
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;//收藏
+@property (weak, nonatomic) IBOutlet UIButton *setButton;//设置
+@property (weak, nonatomic) IBOutlet UIButton *radioButton;//电台
+@property (weak, nonatomic) IBOutlet UIButton *musicButton;//音乐
+
+@property (weak, nonatomic) IBOutlet UIView *buttonView;//放button的背景图片
+
+@property (weak, nonatomic) IBOutlet UIButton *ownerButton;
+
+
+@property (nonatomic ,assign)BOOL isShow;
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"background.jpg"]]];
+    
+    
+    self.buttonView.layer.cornerRadius = self.buttonView.frame.size.width/2;
+    self.buttonView.layer.masksToBounds = YES;
+//    [self.view bringSubviewToFront:_buttonView];
+    //听书
+    self.listenBook.layer.cornerRadius = self.listenBook.frame.size.width/2;
+    self.listenBook.layer.masksToBounds = YES;
+    //直播
+    self.liveButton.layer.cornerRadius = self.liveButton.frame.size.width/2;
+    self.liveButton.layer.masksToBounds = YES;
+    //收藏
+    self.saveButton.layer.cornerRadius = self.saveButton.frame.size.width/2;
+    self.saveButton.layer.masksToBounds = YES;
+    //设置
+    self.setButton.layer.cornerRadius = self.setButton.frame.size.width/2;
+    self.setButton.layer.masksToBounds = YES;
+    //电台
+    self.radioButton.layer.cornerRadius = self.radioButton.frame.size.width/2;
+    self.radioButton.layer.masksToBounds = YES;
+    //音乐
+    self.musicButton.layer.cornerRadius = self.musicButton.frame.size.width/2;
+    self.musicButton.layer.masksToBounds = YES;
+    
+    //控制按钮
+    self.ownerButton.layer.cornerRadius = self.ownerButton.frame.size.width/2;
+    self.ownerButton.layer.masksToBounds = YES;
+//    [self.view bringSubviewToFront:_ownerButton];
+    
+    //定时器
+    NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(circleAction) userInfo:nil repeats:YES];
+    
+ 
+    
+}
+
+#pragma mark----实现定时器的方法----
+- (void)circleAction{
+    
+    //每1s旋转一个
+    self.buttonView.transform = CGAffineTransformRotate(self.buttonView.transform, M_PI/360);
+    
+    
+}
+
+
+
+#pragma mark----点击听书按钮
+- (IBAction)clickListenButton:(UIButton *)sender {
+}
+
+#pragma mark----点击直播按钮
+- (IBAction)clickLiveButton:(UIButton *)sender {
+}
+#pragma mark---点击收藏按钮
+- (IBAction)clickSaveButton:(UIButton *)sender {
+}
+#pragma mark----点击设置按钮
+- (IBAction)clickSettingButton:(UIButton *)sender {
+}
+#pragma mark----点击电台按钮
+- (IBAction)clickRadioButton:(UIButton *)sender {
+}
+#pragma mark---点击音乐按钮
+- (IBAction)clickMusicButton:(UIButton *)sender {
+    
+    MsicuViewController * containerVC = [[UIStoryboard storyboardWithName:@"Three" bundle:nil] instantiateViewControllerWithIdentifier:@"music_Id"];
+    [self showViewController:containerVC sender:nil];
+    
+    
+}
+
+#pragma mark-----点击中间按钮
+- (IBAction)clickOwnerButton:(UIButton *)sender {
+    
+    if (self.isShow == NO) {
+        
+        self.buttonView.hidden = NO;
+        self.isShow = YES;
+    }else{
+        self.buttonView.hidden = YES;
+        self.isShow = NO;
+    }
+    
+    
+    
+    
+}
+
+
+
+
+
+
+@end

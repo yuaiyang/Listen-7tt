@@ -1,0 +1,86 @@
+//
+//  Dock.m
+//  新浪微博
+//
+//  Created by lanou3g on 15/10/17.
+//  Copyright © 2015年 itcast. All rights reserved.
+//
+
+// 底部选项条
+#import "Dock.h"
+#import "DockItem.h"
+#import "NSString+MJ.h"
+
+@interface Dock ()
+{
+    DockItem * _selectedItem;
+}
+@end
+
+@implementation Dock
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        
+    }
+    self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tabbar_background.png"]]; // 样板背景图片
+    return self;
+}
+
+- (void)addItemWithIcon:(NSString *)icon title:(NSString *)title{
+    
+    // 1;创建item
+    DockItem * item = [[DockItem alloc] init];
+    
+    [item setTitle:title forState:UIControlStateNormal];
+    // 设置内部imageView图片只有用下面方法   不要用setback那个
+    [item setImage:[UIImage imageNamed:icon] forState:UIControlStateNormal];
+    
+    [item setImage:[UIImage imageNamed:[icon fileAppend:@"_selected"]] forState:UIControlStateSelected];
+   
+    // 给item设置监听事件
+    [item addTarget:self action:@selector(itemClick:) forControlEvents:UIControlEventTouchDown];
+    
+    // 2;添加item
+    [self addSubview:item];
+    // 3;调整item的fram
+    [UIView beginAnimations:nil context:nil];
+    NSInteger count = self.subviews.count;
+
+    CGFloat height = self.frame.size.height; // 高度
+    CGFloat width = self.frame.size.width / count; // 宽度
+    for (int i = 0; i<count; i++) {
+        DockItem *dockItem = self.subviews[i];
+        dockItem.tag = i; // 绑定标记
+        dockItem.frame = CGRectMake(width * i, 0, width, height);
+        
+        if (i == 0) {
+            [self itemClick:dockItem]; // 调用下面方法  相当于点击一次
+        }
+        
+    }
+    
+    [UIView commitAnimations];
+}
+
+
+#pragma mark item 监听事件
+- (void)itemClick:(DockItem *)item{
+    
+    // 0;通知代理
+    if ([_delegate respondsToSelector:@selector(dock:itemSelectedFrom:to:)]) {
+        [_delegate dock:self itemSelectedFrom:_selectedItem.tag to:item.tag];
+    }
+    // 1取消选中当前的item
+    _selectedItem.selected = NO;
+    // 2;选中点击的item
+    item.selected = YES;
+    // 3;赋值
+    _selectedItem = item;
+
+}
+
+
+@end

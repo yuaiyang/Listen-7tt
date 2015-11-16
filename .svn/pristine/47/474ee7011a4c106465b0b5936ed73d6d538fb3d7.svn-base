@@ -1,0 +1,111 @@
+//
+//  SetTableViewCell.m
+//  Radio
+//
+//  Created by lanou3g on 15/10/20.
+//  Copyright (c) 2015年 Ailan. All rights reserved.
+//
+
+#import "SetTableViewCell.h"
+#import "ShareHandle.h"
+@implementation SetTableViewCell
+
+- (void)awakeFromNib {
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    
+}
+
+
+
+- (void)updateDataBaseWithOldValue:(BOOL)oldValue andNewValue:(BOOL)newValue withColum:(NSString *)colum bySwitch:(UISwitch *)turnon{
+    
+    if (!turnon.on) {
+        
+    
+//        ShareHandle * handle = [ShareHandle shareHandle];
+//        NSLog(@"%d" , self.isOn.on);
+//        NSString * updateColumn = colum;
+//        [handle.database executeQueryWithFormat:@"update user set isListen = %d where isListen = %d" , newValue , !newValue];
+//        NSLog(@"%d" , self.isOn.on);
+    }
+    
+//    ShareHandle * handle = [ShareHandle shareHandle];
+//    NSString * updateColumn = colum;
+//    [handle.database executeQueryWithFormat:@"update user set isListen = %d where isListen = %d" , newValue , !newValue];
+    
+}
+
+- (IBAction)turnon:(UISwitch *)sender {
+    
+    ShareHandle * handle = [ShareHandle shareHandle];
+    [handle.database open];
+    if (sender.tag == 10) {
+        
+        if (!sender.on) {
+            
+            BOOL newValue = !sender.on;
+            BOOL oldValue = sender.on;
+
+            [handle.database executeUpdateWithFormat:@"update user set isListen = %d where isListen = %d" , newValue,oldValue];
+            
+        }else if (sender.on){
+            
+            BOOL newValue = sender.on;
+            BOOL oldValue = !sender.on;
+
+            [handle.database executeUpdateWithFormat:@"update user set isListen = %d where isListen = %d" , newValue,oldValue];
+            
+        }
+        
+    }else if (sender.tag == 11){
+        
+        if (!sender.on) {
+            
+            BOOL newValue = !sender.on;
+            BOOL oldValue = sender.on;
+
+            [handle.database executeUpdateWithFormat:@"update user set isDownLoade = %d where isPlay = %d" , newValue,oldValue];
+            
+        }else if (sender.on){
+            
+            BOOL newValue = sender.on;
+            BOOL oldValue = !sender.on;
+
+            [handle.database executeUpdateWithFormat:@"update user set isPlay = %d where isDownLoade = %d" , newValue,oldValue];
+            
+        }
+        
+        
+    }else if(sender.tag == 12){
+        
+        
+        if (!sender.on) {
+            
+            BOOL newValue = !sender.on;
+            BOOL oldValue = sender.on;
+
+            [handle.database executeUpdateWithFormat:@"update user set isPlay = %d where isPlay = %d" , newValue,oldValue];
+            
+        }else if (sender.on){
+            
+            BOOL newValue = sender.on;
+            BOOL oldValue = !sender.on;
+
+            [handle.database executeUpdateWithFormat:@"update user set isPlay = %d where isPlay = %d" , newValue,oldValue];
+            
+        }
+        
+    }
+    [handle.database close];
+}
+
+
+
+
+
+@end

@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "a17a24a9-058f-4038-831e-c7e859d90da6++1620",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "a17a24a9-058f-4038-831e-c7e859d90da6++1620" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "a17a24a9-058f-4038-831e-c7e859d90da6++1620" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C7C33CA6-4EA6-40FC-90AE-3C6675B04D35",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "a17a24a9-058f-4038-831e-c7e859d90da6++1620" : "Listen%E2%80%942"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Radio",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Radio.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/www.svnchina.com\/svn\/aaaaaaaa",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "a17a24a9-058f-4038-831e-c7e859d90da6++1620"
+    }
+  ]
+}

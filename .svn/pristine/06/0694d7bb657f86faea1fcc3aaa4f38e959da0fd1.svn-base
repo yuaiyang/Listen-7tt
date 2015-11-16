@@ -1,0 +1,19 @@
+//
+//  MusicModel.h
+//  Radio
+//
+//  Created by lanou3g on 15/10/21.
+//  Copyright (c) 2015年 Ailan. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface MusicModel : NSObject
+@property (nonatomic ,strong)NSString * albumName;
+@property (nonatomic ,strong)NSString * pic;
+@property (nonatomic ,strong)NSString * rname;//头部轮播 点击播放页面的：期名//如果是下面音乐Cell上的rnameLable上的值
+@property (nonatomic ,strong)NSString * rid;
+@property (nonatomic ,strong)NSString * des;
+
+@property (nonatomic ,strong)NSString * name;//区头名
+@end

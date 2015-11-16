@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="featureCollention_cell" id="gTV-IL-0wX" customClass="FeaturedCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="325" height="75"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="325" height="75"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="I0C-WZ-Ejn">
+                        <rect key="frame" x="0.0" y="0.0" width="75" height="75"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="I0C-WZ-Ejn" secondAttribute="height" multiplier="1:1" id="NAw-HG-7wT"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌手名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5N-h2-yD1">
+                        <rect key="frame" x="85" y="10" width="230" height="30"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="SWU-7Y-sjV"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌曲名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SM2-y6-jbc">
+                        <rect key="frame" x="85" y="46" width="230" height="21"/>
+                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="68R-lf-coD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="SM2-y6-jbc" firstAttribute="leading" secondItem="I0C-WZ-Ejn" secondAttribute="trailing" id="4MS-Bm-roP"/>
+                <constraint firstItem="e5N-h2-yD1" firstAttribute="leading" secondItem="SM2-y6-jbc" secondAttribute="leading" id="If9-Gq-9Pe"/>
+                <constraint firstItem="I0C-WZ-Ejn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Iv1-yL-nuy"/>
+                <constraint firstItem="e5N-h2-yD1" firstAttribute="trailing" secondItem="SM2-y6-jbc" secondAttribute="trailing" id="Muu-cc-SnA"/>
+                <constraint firstItem="e5N-h2-yD1" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="Vai-mw-WcK"/>
+                <constraint firstAttribute="bottom" secondItem="I0C-WZ-Ejn" secondAttribute="bottom" id="fwW-eS-Hcv"/>
+                <constraint firstAttribute="trailing" secondItem="e5N-h2-yD1" secondAttribute="trailing" constant="10" id="iGe-JW-kyH"/>
+                <constraint firstItem="e5N-h2-yD1" firstAttribute="leading" secondItem="I0C-WZ-Ejn" secondAttribute="trailing" constant="10" id="rLS-Lb-ExV"/>
+                <constraint firstItem="I0C-WZ-Ejn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="x3A-Jw-WO0"/>
+                <constraint firstItem="SM2-y6-jbc" firstAttribute="top" secondItem="e5N-h2-yD1" secondAttribute="bottom" constant="6" id="xEK-3s-55b"/>
+            </constraints>
+            <size key="customSize" width="325" height="75"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="4MS-Bm-roP"/>
+                </mask>
+            </variation>
+            <connections>
+                <outlet property="imgView" destination="I0C-WZ-Ejn" id="LFn-rh-cni"/>
+                <outlet property="musicName" destination="SM2-y6-jbc" id="DMi-kU-FU8"/>
+                <outlet property="singerName" destination="e5N-h2-yD1" id="DzV-Dv-nS0"/>
+            </connections>
+            <point key="canvasLocation" x="342.5" y="459.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -1,0 +1,14 @@
+//
+//  Urls.h
+//  Radio
+//
+//  Created by lanou3g on 15/10/21.
+//  Copyright (c) 2015年 Ailan. All rights reserved.
+//
+
+#ifndef Radio_Urls_h
+#define Radio_Urls_h
+//精选
+#define kFeatureUrls @"http://api.kaolafm.com/api/v4/pagecontent/list?pageid=6&installid=0000zPXT&udid=6fb609b09a9a9c0f8b5ea15a7fb30b7c&sessionid=6fb609b09a9a9c0f8b5ea15a7fb30b7c1445340608996&imsi=460006482175750&operator=1&network=1&timestamp=1445340820&sign=b369bb4f989164e84387694ffb5d0673&resolution=480*854&devicetype=0&channel=A-360&version=4.2.2&appid=0"
+
+#endif

@@ -1,0 +1,38 @@
+//
+//  TimerViewController.m
+//  Radio
+//
+//  Created by lanou3g on 15/10/21.
+//  Copyright (c) 2015年 Ailan. All rights reserved.
+//
+
+#import "TimerViewController.h"
+#import "DockItem.h"
+@interface TimerViewController ()
+
+@end
+
+@implementation TimerViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+}
+
+- (void)resetButton{
+    
+
+    
+    
+    
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+
+@end

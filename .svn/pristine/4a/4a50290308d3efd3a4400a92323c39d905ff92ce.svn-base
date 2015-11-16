@@ -1,0 +1,290 @@
+//
+//  MusicCollectionViewController.m
+//  Radio
+//
+//  Created by lanou3g on 15/10/21.
+//  Copyright (c) 2015年 Ailan. All rights reserved.
+//
+
+#import "FeaturedCollectionViewController.h"
+#import "FeaturedCollectionViewCell.h"
+#import "MusicCollectionViewCell.h"
+#import "HeaderCollectionViewCell.h"
+#import "MusicModel.h"
+#import "UIImageView+WebCache.h"
+#import "Urls.h"
+
+@interface FeaturedCollectionViewController ()<UICollectionViewDelegateFlowLayout>
+@property (nonatomic ,strong)UICollectionViewFlowLayout * layout;//布局
+@property (nonatomic,strong)NSMutableArray * sectionsArray;//存储有几个分区
+@property (nonatomic ,strong)NSMutableArray * headerModelsArray;//存储头部轮播的数据
+@property (nonatomic,strong)NSMutableArray * arrays;//存放数组的数组
+
+
+
+
+@end
+
+@implementation FeaturedCollectionViewController
+
+static NSString * const reuseIdentifier = @"Cell";
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    
+    //1. 注册Cell
+//    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"musicCollection_cell"];
+
+    [self.collectionView registerNib:[UINib nibWithNibName:@"MusicCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"musicCollection_cell"];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"FeaturedCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"featureCollention_cell"];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"HeaderCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"header_cell"];
+    
+    
+    
+    
+    //注册区头
+    [self.collectionView registerClass:[UICollectionReusableView class ] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
+ 
+    
+    //2.创建布局方式的对象
+    self.layout = [[UICollectionViewFlowLayout alloc] init];
+   
+    //设置最小行间距
+    self.layout.minimumLineSpacing = 30;
+    //设置最小列间距
+    self.layout.minimumInteritemSpacing = 30;
+    //3.解析数据
+    [self parseData];
+}
+#pragma mark-----解析数据----------
+- (void)parseData{
+    //让子线程去解析数据（子线程只有这一个吗）
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSURL * urlString = [NSURL URLWithString:kFeatureUrls];
+        NSURLRequest * request = [NSURLRequest requestWithURL:urlString];
+        [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            if (data!= nil) {
+                //获取最外面的字典
+                NSMutableDictionary * dic = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingMutableContainers) error:nil];
+                NSDictionary * dict = dic[@"result"];
+                NSArray * array = dict[@"dataList"];
+                self.sectionsArray = [NSMutableArray array];
+//                self.headerModelsArray = [NSMutableArray array];
+                self.arrays = [NSMutableArray array];
+                for (NSDictionary * dict1 in array) {
+                    MusicModel * model = [[MusicModel alloc] init];
+                    [model setValuesForKeysWithDictionary:dict1];
+                    //决定有几个分区(这个Model里还存着name即区头名)
+                    [self.sectionsArray addObject:model];
+#pragma mark-------------这部分解析的是头部轮播的数据-----------
+                    NSArray * array1 = dict1[@"dataList"];
+                    self.headerModelsArray = [NSMutableArray array];
+                    for (NSDictionary * dict2 in array1) {
+                    
+                        MusicModel * headerModel = [[MusicModel alloc] init];
+                        [headerModel setValuesForKeysWithDictionary:dict2];
+                        [self.headerModelsArray addObject:headerModel];
+                       
+                        
+                    }
+                    
+                     NSLog(@"==========%@,++++%ld",self.headerModelsArray,self.headerModelsArray.count);
+//                    [self.arrays addObjectsFromArray:self.headerModelsArray];//这样加的是将数组中的元素添加到另一个数组，这种方法是将数组添加到一个
+                    [self.arrays addObject:self.headerModelsArray];
+                    NSLog(@"===========%@========%ld==========",self.arrays,self.arrays.count);
+
+                    
+                }
+                [self.collectionView reloadData];
+                
+            }
+        
+            
+        }];
+        
+    });
+}
+
+#pragma mark <UICollectionViewDataSource>
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+
+    return self.arrays.count;
+}
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    for (int i = 1; i < self.arrays.count; i++) {
+        if (section == i) {
+            return [self.arrays[i] count];
+        }
+    }
+   
+    return 1;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    //第一个分区：头部轮播图
+    if (indexPath.section == 0) {
+#warning mark-----这里设置轮播图
+        HeaderCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"header_cell" forIndexPath:indexPath];
+        
+        cell.contentView.backgroundColor = [UIColor blueColor];
+        for (MusicModel * model  in self.arrays[0]) {
+            for (int i = 0; i < [self.arrays[0] count]; i++) {
+                cell.model = model;
+                [cell.picsArray[i] sd_setImageWithURL:[NSURL URLWithString:model.pic]];
+            }
+      
+            
+            NSLog(@"%@",model.pic);
+        }
+//
+        return cell;
+        
+    }else if (indexPath.section == 5){
+        //第六个分区：新歌速递
+        FeaturedCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"featureCollention_cell" forIndexPath:indexPath];
+        cell.contentView.backgroundColor = [UIColor whiteColor];
+        MusicModel * model = self.arrays[5][indexPath.row];
+        cell.model = model;
+        
+        return cell;
+        
+    }else if (indexPath.section == 1){
+        MusicCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"musicCollection_cell" forIndexPath:indexPath];
+        MusicModel * model = self.arrays[1][indexPath.row];
+        cell.model = model;
+        
+        
+        return cell;
+
+        
+    }else if (indexPath.section == 2){
+        MusicCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"musicCollection_cell" forIndexPath:indexPath];
+        MusicModel * model = self.arrays[2][indexPath.row];
+        cell.model = model;
+        
+        
+        return cell;
+
+    }else if (indexPath.section == 3){
+        MusicCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"musicCollection_cell" forIndexPath:indexPath];
+        MusicModel * model = self.arrays[3][indexPath.row];
+        cell.model = model;
+        
+        
+        return cell;
+
+    }else{
+        MusicCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"musicCollection_cell" forIndexPath:indexPath];
+        MusicModel * model = self.arrays[4][indexPath.row];
+        cell.model = model;
+        
+        
+        return cell;
+
+    }
+
+//    }else{
+//        //第二个分区：精选歌单
+//        //第三个分区：热门推荐
+//        //第四个分区：主播节目
+//        //第五个分区：自媒体
+//        for (int i = 1; i < self.arrays.count - 1; i++) {
+//            
+//        }
+//        MusicCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"musicCollection_cell" forIndexPath:indexPath];
+//        
+//        return cell;
+//        
+//        
+//    }
+//        for (int i = 1; i < self.arrays.count - 1; i++) {
+//            
+//            MusicCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"musicCollection_cell" forIndexPath:indexPath];
+//            MusicModel * model = self.arrays[i][indexPath.row];
+//            cell.model = model;
+//            
+//            
+//            return cell;
+//        }
+    return nil;
+    
+}
+#pragma mark----layout布局设置item的size
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        
+        return self.layout.itemSize = CGSizeMake(self.view.frame.size.width, 150);
+        
+    }else if (indexPath.section == 5){
+        return self.layout.itemSize = CGSizeMake(self.view.frame.size.width, 70);
+        
+
+    }else{
+        
+        return self.layout.itemSize = CGSizeMake(self.view.frame.size.width / 3 - 20, 150);
+ 
+    }
+    
+}
+//设置区头的高度
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    if (section == 0) {
+        return CGSizeMake(320,-20);
+    }
+    return CGSizeMake(320, 30);
+    
+}
+
+
+#pragma mark------设置区头（区尾也是用这个方法）---
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+//    NSArray * array = @[@"1",@"2",@"3",@"4",@"5"];
+//    NSMutableArray * array = self.sectionsArray;
+      MusicModel * model = self.sectionsArray[indexPath.section];
+    if (indexPath.section == 0) {
+        return nil;
+        
+    }else{
+        if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+            //重用集合中去取，是否有可用的header
+            UICollectionReusableView * headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"header" forIndexPath:indexPath];
+            headerView.backgroundColor = [UIColor whiteColor];
+            
+            
+            //添加lable
+            UILabel * lable = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, headerView.frame.size.width, headerView.frame.size.height)];
+            lable.backgroundColor = [UIColor whiteColor];
+          
+            lable.text = model.name;
+            [headerView addSubview:lable];
+            return headerView;
+        }
+        
+        
+    }
+    
+    return nil;
+}
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
+    if (section == 0) {
+        return self.layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    }
+    return self.layout.sectionInset = UIEdgeInsetsMake(0, 20, 0, 20);
+    
+}
+#pragma mark------点击进入下一个界面------
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    //将ViewController创建推出下一个界面
+    
+    
+    
+    
+}
+
+
+@end

@@ -1,0 +1,29 @@
+//
+//  HeaderCollectionViewCell.h
+//  Radio
+//
+//  Created by lanou3g on 15/10/21.
+//  Copyright (c) 2015年 Ailan. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+@class MusicModel;
+
+@interface HeaderCollectionViewCell : UICollectionViewCell<UIScrollViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+
+@property (weak, nonatomic) IBOutlet UIPageControl *pageControll;
+
+
+
+@property (nonatomic ,strong)UIImageView * imgViewPicture;
+
+- (void)count:(NSInteger)count arrays:(NSArray *)array;
+
+@property (nonatomic,strong)MusicModel * model;
+@property (nonatomic ,strong)NSMutableArray * picsArray;
+
+
+@end

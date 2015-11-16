@@ -1,0 +1,83 @@
+//
+//  ShareHandle.m
+//  Radio
+//
+//  Created by lanou3g on 15/10/20.
+//  Copyright (c) 2015年 Ailan. All rights reserved.
+//
+
+#import "ShareHandle.h"
+#import "FMDatabase.h"
+#import "FMDatabaseQueue.h"
+
+@interface ShareHandle ()
+
+@end
+
+@implementation ShareHandle
+
+static ShareHandle *handle = nil;
+
++ (ShareHandle *)shareHandle{
+    
+    static dispatch_once_t predicated;
+    dispatch_once(&predicated, ^{
+        handle = [[ShareHandle alloc] init];
+        
+    });
+    return handle;
+    
+}
+
+- (void)creatSetDB{
+    
+    NSString * documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString * filePath = [documentPath stringByAppendingPathComponent:@"set.db"];
+    // 创建数据库
+    self.database = [FMDatabase databaseWithPath:filePath];
+    
+    NSLog(@"%@" , filePath);
+    
+    // 创建表
+    NSString * name = @"cloumn";
+    
+    if ([self.database open] == YES) {
+   
+       }
+    
+    [self.database executeUpdate:@"create table user (name text PRIMARY KEY ,isListen bool , isDownLoade bool,isPlay bool)"];
+    
+        [self.database executeUpdateWithFormat:@"insert into user (name,isListen,isDownLoade,isPlay) values (%@,0,0,0)" , name];
+   
+    [self.database close];
+    
+}
+
+- (void)queryDB{
+   
+    [self creatSetDB];
+    [self.database open];
+    
+    FMResultSet * resultSet = [handle.database executeQuery:@"select * from user"];
+    
+    while ([resultSet next]) {
+        
+
+        NSString * boolIsDownLoade = [resultSet stringForColumn:@"isDownLoade"];
+        
+       handle.isUseMobelDownLoade = [boolIsDownLoade boolValue];
+
+        
+        NSString * boolIsPlay = [resultSet stringForColumn:@"isPlay"];
+        handle.isPlayWithOn = [boolIsPlay boolValue];
+        
+        NSString * boolIsListen = [resultSet stringForColumn:@"isListen"];
+        handle.isUseMobelListen = boolIsListen;
+
+    }
+    [self.database close];
+}
+
+
+
+@end

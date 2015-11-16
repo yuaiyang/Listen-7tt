@@ -1,0 +1,289 @@
+{
+"coverList": [
+{
+"bookId": 27622,
+"commentCount": 0,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/28d59743e9764a0d8b99656f4567cbef.jpg",
+"desc": "",
+"features": null,
+"id": 808,
+"insideCover": null,
+"lastModify": "2015-10-19T11:58:09",
+"name": "把栏杆拍遍",
+"publishType": 0,
+"sections": 0,
+"type": 5,
+"url": "27622"
+},
+{
+"bookId": 17722,
+"commentCount": 0,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/3c8003fd917f4e7394ef1a430f2d8391.jpg",
+"desc": "",
+"features": null,
+"id": 809,
+"insideCover": null,
+"lastModify": "2015-10-19T11:58:19",
+"name": "冰封魔咒",
+"publishType": 0,
+"sections": 0,
+"type": 5,
+"url": "17722"
+},
+{
+"bookId": 6285,
+"commentCount": 0,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/3f24ca31907a48fcbd6a2bc92d5e67d3.jpg",
+"desc": "",
+"features": null,
+"id": 810,
+"insideCover": null,
+"lastModify": "2015-10-19T11:58:29",
+"name": "参禅悟人生",
+"publishType": 0,
+"sections": 0,
+"type": 5,
+"url": "6285"
+},
+{
+"bookId": 6217,
+"commentCount": 0,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/b701d32041d74e1ca9fe4ee0e3ff687f.jpg",
+"desc": "",
+"features": null,
+"id": 811,
+"insideCover": null,
+"lastModify": "2015-10-19T11:58:38",
+"name": "侯门娇",
+"publishType": 0,
+"sections": 0,
+"type": 5,
+"url": "6217"
+},
+{
+"bookId": 6081,
+"commentCount": 0,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/64340c5bf1b34a87b44db1aa0c558c3b.jpg",
+"desc": "",
+"features": null,
+"id": 759,
+"insideCover": null,
+"lastModify": "2015-09-30T14:50:14",
+"name": "流星幻剑",
+"publishType": 0,
+"sections": 0,
+"type": 5,
+"url": "6081"
+},
+{
+"bookId": 28572,
+"commentCount": 0,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/f09ad94fe1274871ba65b3e56bdfe8e7.jpg",
+"desc": "",
+"features": null,
+"id": 760,
+"insideCover": null,
+"lastModify": "2015-09-30T14:50:18",
+"name": "妻居一品",
+"publishType": 0,
+"sections": 0,
+"type": 5,
+"url": "28572"
+},
+{
+"bookId": 28785,
+"commentCount": 0,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/a4e7ca4c3d0746c4a9255e88866b5a90.jpg",
+"desc": "",
+"features": null,
+"id": 761,
+"insideCover": null,
+"lastModify": "2015-09-30T14:50:24",
+"name": "中国式婚姻",
+"publishType": 0,
+"sections": 0,
+"type": 5,
+"url": "28785"
+},
+{
+"bookId": 28681,
+"commentCount": 0,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/f9bffb834d804111b83460558dd96f87.jpg",
+"desc": "",
+"features": null,
+"id": 762,
+"insideCover": null,
+"lastModify": "2015-09-30T14:50:28",
+"name": "中华五千年历史故事（第一部）",
+"publishType": 0,
+"sections": 0,
+"type": 5,
+"url": "28681"
+}
+],
+"list": [
+{
+"bookList": [
+{
+"announcer": "静文",
+"author": "有琳",
+"bookId": 5402,
+"bookName": "泪妾",
+"commentCount": 163,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/a1d2e112f0ae472991c6c767f993a696.jpg",
+"hot": 268200,
+"sections": 239,
+"state": 1
+},
+{
+"announcer": "卓不凡",
+"author": "远征士兵",
+"bookId": 28607,
+"bookName": "浴血抗战",
+"commentCount": 182,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/06bf5913bf004f4d85d5b2d60afb3ab1.jpg",
+"hot": 180305,
+"sections": 66,
+"state": 2
+},
+{
+"announcer": "box",
+"author": "人生谁伴",
+"bookId": 28059,
+"bookName": "尊道",
+"commentCount": 247,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/16c90304e37b043c278d2d03446.jpg",
+"hot": 152808,
+"sections": 220,
+"state": 1
+}
+],
+"count": 3,
+"topicId": 37,
+"topicName": "小编推荐"
+},
+{
+"bookList": [
+{
+"announcer": "平原鹤轩",
+"author": "兆郑",
+"bookId": 28933,
+"bookName": "魔道成仙",
+"commentCount": 54,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/cc99a5f1e1e54029a2eaa78798f26192.jpg",
+"hot": 8870,
+"sections": 30,
+"state": 1
+},
+{
+"announcer": "荷衣",
+"author": "那多",
+"bookId": 28966,
+"bookName": "纸婴",
+"commentCount": 10,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/57752dbd653c48dc8fb3aaa52a6d9572.jpg",
+"hot": 13621,
+"sections": 19,
+"state": 2
+},
+{
+"announcer": "七号螺丝",
+"author": "海若等",
+"bookId": 28947,
+"bookName": "学前金牌书系：寓言  ",
+"commentCount": 2,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/0ed14ad777e749079b2453f3db36c8ce.jpg",
+"hot": 7955,
+"sections": 45,
+"state": 1
+}
+],
+"count": 3,
+"topicId": 38,
+"topicName": "新书推荐"
+},
+{
+"bookList": [
+{
+"announcer": "杨枪枪",
+"author": "浮生",
+"bookId": 27561,
+"bookName": "剑噬大地",
+"commentCount": 937,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/dfa7a0d8a5e84b50b853f6f75c2756eb.jpg",
+"hot": 785561,
+"sections": 173,
+"state": 2
+},
+{
+"announcer": "box",
+"author": "躲在洞里赛太阳",
+"bookId": 27166,
+"bookName": "血煮江湖梦",
+"commentCount": 275,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/b6e79898eb6840e3aba81bb3d325a0d5.jpg",
+"hot": 661547,
+"sections": 96,
+"state": 2
+},
+{
+"announcer": "臧汝德",
+"author": "我吃西红柿",
+"bookId": 5540,
+"bookName": "星辰变",
+"commentCount": 522,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/8c030509144548428891b8d1eedef18b.jpg",
+"hot": 2254226,
+"sections": 680,
+"state": 2
+}
+],
+"count": 3,
+"topicId": 39,
+"topicName": "男生必听榜"
+},
+{
+"bookList": [
+{
+"announcer": "伟歌音频工作室",
+"author": "问红尘",
+"bookId": 5509,
+"bookName": "古代美容师",
+"commentCount": 708,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/13504bd5bb7e3dea6cb5eaf0.jpg",
+"hot": 971430,
+"sections": 130,
+"state": 1
+},
+{
+"announcer": "五丁包，蜜蜜",
+"author": "北藤",
+"bookId": 5092,
+"bookName": "天才儿子腹黑娘亲",
+"commentCount": 14461,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/b862441408da786a35bc19018.jpg",
+"hot": 12681170,
+"sections": 745,
+"state": 1
+},
+{
+"announcer": "全小全",
+"author": "秦简",
+"bookId": 5094,
+"bookName": "庶女有毒",
+"commentCount": 46718,
+"cover": "http://78rbm4.com2.z0.glb.qiniucdn.com/3d87accadbed420ebe05f643d2495ad7.jpg",
+"hot": 40541081,
+"sections": 573,
+"state": 2
+}
+],
+"count": 3,
+"topicId": 40,
+"topicName": "女生爱听榜"
+}
+],
+"msg": null,
+"status": 0,
+"topicCount": 0
+}

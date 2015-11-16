@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C7C33CA6-4EA6-40FC-90AE-3C6675B04D35</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Radio</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>a17a24a9-058f-4038-831e-c7e859d90da6++1620</key>
+		<string>http://www.svnchina.com/svn/aaaaaaaa/Radio</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Radio.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>a17a24a9-058f-4038-831e-c7e859d90da6++1620</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>a17a24a9-058f-4038-831e-c7e859d90da6++1620</key>
+		<string>http://www.svnchina.com/svn/aaaaaaaa</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>http://www.svnchina.com/svn/aaaaaaaa/Radio/Radio.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>a17a24a9-058f-4038-831e-c7e859d90da6++1620</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>a17a24a9-058f-4038-831e-c7e859d90da6++1620</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Listen%E2%80%942</string>
+		</dict>
+	</array>
+</dict>
+</plist>

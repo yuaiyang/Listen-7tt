@@ -1,0 +1,179 @@
+//
+//  SetViewController.m
+//  Radio
+//
+//  Created by lanou3g on 15/10/20.
+//  Copyright (c) 2015年 Ailan. All rights reserved.
+//
+
+#import "SetViewController.h"
+#import "SetTableViewCell.h"
+#import "ShareHandle.h"
+#import "WdCleanCaches.h"
+@interface SetViewController () <UITableViewDataSource , UITableViewDelegate>
+
+@property (strong , nonatomic) NSArray * listArray;
+@property (strong , nonatomic) NSArray * cellListArray1;
+@property (strong , nonatomic) NSArray * cellListArray2;
+@property (strong , nonatomic) NSArray * cellListArray3;
+@property (strong , nonatomic) NSString * cacheFile;
+@property (assign , nonatomic) double cacheSize;
+
+@end
+
+@implementation SetViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+
+    [[ShareHandle shareHandle] queryDB];
+    
+    self.setTableView.delegate = self;
+    self.setTableView.dataSource = self;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.setTableView.backgroundColor = [UIColor whiteColor];
+    
+    [self addData];
+    [self registerCell];
+    [self cleanCache];
+    
+    self.navigationController.navigationBar.hidden = YES;
+    
+}
+
+- (void)addData{
+    self.cellListArray1 = @[@"使用移动流量收听",@"使用移动流量离线",@"启动时自动续播"];
+    self.cellListArray2 = @[@"定时关闭",@"清除缓存"];
+    self.cellListArray3 = @[@"新版本检测",@"进入欢迎页",@"关于我们"];
+    self.listArray = [NSArray arrayWithObjects:_cellListArray1,_cellListArray2,_cellListArray3, nil];
+}
+
+- (void)registerCell{
+    
+    UINib * nib = [UINib nibWithNibName:@"SetTableViewCell" bundle:nil];
+    [self.setTableView registerNib:nib forCellReuseIdentifier:@"setCell"];
+    
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return self.listArray.count;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.listArray[section] count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    ShareHandle * handle = [ShareHandle shareHandle];
+    
+    if (indexPath.section == 0) {
+        SetTableViewCell * cell =[tableView dequeueReusableCellWithIdentifier:@"setCell"];
+        cell.setLabel.text = self.listArray[indexPath.section][indexPath.row];
+        
+        switch (indexPath.row) {
+            case 0:
+                cell.isOn.on = handle.isUseMobelListen;
+                cell.isOn.tag = 10;
+                NSLog(@"handle.isUseMobelListen = %d",handle.isUseMobelListen);
+                NSLog(@"cell.isOn.on = %d" , cell.isOn.on);
+                break;
+            case 1:
+                cell.isOn.tag = 11;
+                cell.isOn.on = handle.isUseMobelDownLoade;
+                NSLog(@"%d" , handle.isUseMobelDownLoade);
+                break;
+            case 2:
+                cell.isOn.tag = 12;
+                cell.isOn.on = handle.isPlayWithOn;
+                break;
+            default:
+                break;
+        }
+        
+        
+        return cell;
+    }else{
+        
+        UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+            
+        }
+        
+        if (indexPath.section == 1 && indexPath.row == 1) {
+            cell.detailTextLabel.text = @"清除缓存";
+        }
+        
+        cell.textLabel.text = self.listArray[indexPath.section][indexPath.row];
+        return cell;
+    }
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    
+    
+    
+    NSLog(@"%@" , [[UIDevice currentDevice] systemVersion]);
+    NSLog(@"%@" , [[UIDevice currentDevice] systemName]);
+    NSLog(@"%@" , [[UIDevice currentDevice] localizedModel]);
+
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (self.view.frame.size.width > 350) {
+        return 55;
+    }else{
+        return 45;
+    }
+
+}
+
+
+#pragma mark  清除缓存
+- (void)cleanCache{
+    self.cacheFile = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
+ 
+    [WdCleanCaches clearCachesWithFilePath:self.cacheFile];
+    
+    self.cacheSize = [WdCleanCaches sizeWithFilePaht:self.cacheFile];
+    
+    NSLog(@"self.cacheSize = %f" , self.cacheSize);
+    
+}
+
+// 遍历数据库
+#warning mark   不懂  这个地方不科学
+- (void)lookForDatabase{
+    
+//    ShareHandle * handle = [ShareHandle shareHandle];
+//    [handle.database open];
+//    FMResultSet * resultSet = [handle.database executeQuery:@"select * from user"];
+//    
+//    [handle.database executeQuery:@"select * from user"];
+//    while ([resultSet next]) {
+//        
+//        
+//        
+//    }
+//    
+//    
+//    [handle.database close];
+}
+
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+}
+
+
+
+
+@end
